@@ -1,0 +1,938 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.f_Main..Create(BaseForm)
+Gui.f_Main..Caption("Work Order Operations Dashboard (6718)")
+Gui.f_Main..Size(1024,720)
+Gui.f_Main..MinX(0)
+Gui.f_Main..MinY(0)
+Gui.f_Main..Position(0,0)
+Gui.f_Main..AlwaysOnTop(False)
+Gui.f_Main..FontName("Tahoma")
+Gui.f_Main..FontSize(8.25)
+Gui.f_Main..ControlBox(True)
+Gui.f_Main..MaxButton(True)
+Gui.f_Main..MinButton(True)
+Gui.f_Main..MousePointer(0)
+Gui.f_Main..Moveable(True)
+Gui.f_Main..Sizeable(True)
+Gui.f_Main..ShowInTaskBar(True)
+Gui.f_Main..TitleBar(True)
+Gui.f_Main..Event(UnLoad,f_Main_UnLoad)
+Gui.f_Main.tabData.Create(Tab)
+Gui.f_Main.tabData.Enabled(True)
+Gui.f_Main.tabData.Visible(True)
+Gui.f_Main.tabData.Zorder(0)
+Gui.f_Main.tabData.Size(1024,627)
+Gui.f_Main.tabData.Position(0,63)
+Gui.f_Main.tabData.FontName("Tahoma")
+Gui.f_Main.tabData.FontSize(8.25)
+Gui.f_Main.tabData.Dock(2)
+Gui.f_Main.tabData.Anchor(15)
+Gui.f_Main.tabData.Tabs(2)
+Gui.f_Main.tabData.SetTab(0)
+Gui.f_Main.tabData.Caption("Outside Services")
+Gui.f_Main.tabData.SetTab(1)
+Gui.f_Main.tabData.Caption("Inside Services")
+Gui.f_Main.GsGCInside.Create(GsGridControl)
+Gui.f_Main.GsGCInside.Enabled(True)
+Gui.f_Main.GsGCInside.Visible(True)
+Gui.f_Main.GsGCInside.Zorder(0)
+Gui.f_Main.GsGCInside.Size(1022,598)
+Gui.f_Main.GsGCInside.Position(0,0)
+Gui.f_Main.GsGCInside.Parent("tabData",1)
+Gui.f_Main.GsGCInside.Dock(5)
+Gui.f_Main.GsGCOutside.Create(GsGridControl)
+Gui.f_Main.GsGCOutside.Enabled(True)
+Gui.f_Main.GsGCOutside.Visible(True)
+Gui.f_Main.GsGCOutside.Zorder(0)
+Gui.f_Main.GsGCOutside.Size(1022,598)
+Gui.f_Main.GsGCOutside.Position(0,0)
+Gui.f_Main.GsGCOutside.Parent("tabData",0)
+Gui.f_Main.GsGCOutside.Dock(5)
+Gui.f_Main.txtCust.Create(TextBox,"",True,88,20,0,8,26,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.txtCust.TabStop(True)
+Gui.f_Main.txtCust.TabIndex(1)
+Gui.f_Main.lblCust.Create(Label,"Customer:",True,50,13,0,8,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblCust.BorderStyle(0)
+Gui.f_Main.cmdCustBrw.Create(Button)
+Gui.f_Main.cmdCustBrw.Enabled(True)
+Gui.f_Main.cmdCustBrw.Visible(True)
+Gui.f_Main.cmdCustBrw.Zorder(0)
+Gui.f_Main.cmdCustBrw.Size(29,23)
+Gui.f_Main.cmdCustBrw.Position(100,24)
+Gui.f_Main.cmdCustBrw.Caption("^")
+Gui.f_Main.cmdCustBrw.FontName("Tahoma")
+Gui.f_Main.cmdCustBrw.FontSize(8.25)
+Gui.f_Main.cmdCustBrw.Event(Click,cmdCustBrw_Click)
+Gui.f_Main.cmdCustBrw.TabStop(True)
+Gui.f_Main.cmdCustBrw.TabIndex(2)
+Gui.f_Main.lblStart.Create(Label,"Start Date:",True,54,13,0,284,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblStart.BorderStyle(0)
+Gui.f_Main.dtpStartDate.Create(DatePicker)
+Gui.f_Main.dtpStartDate.Enabled(True)
+Gui.f_Main.dtpStartDate.Visible(True)
+Gui.f_Main.dtpStartDate.Zorder(0)
+Gui.f_Main.dtpStartDate.Size(82,20)
+Gui.f_Main.dtpStartDate.Position(282,26)
+Gui.f_Main.dtpStartDate.CheckBox(False)
+Gui.f_Main.dtpStartDate.FontName("Tahoma")
+Gui.f_Main.dtpStartDate.FontSize(8.25)
+Gui.f_Main.dtpStartDate.TabStop(True)
+Gui.f_Main.dtpStartDate.TabIndex(3)
+Gui.f_Main.lblEndDate.Create(Label,"End Date:",True,48,13,0,371,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblEndDate.BorderStyle(0)
+Gui.f_Main.dtpEndDate.Create(DatePicker)
+Gui.f_Main.dtpEndDate.Enabled(True)
+Gui.f_Main.dtpEndDate.Visible(True)
+Gui.f_Main.dtpEndDate.Zorder(0)
+Gui.f_Main.dtpEndDate.Size(82,20)
+Gui.f_Main.dtpEndDate.Position(371,26)
+Gui.f_Main.dtpEndDate.CheckBox(False)
+Gui.f_Main.dtpEndDate.FontName("Tahoma")
+Gui.f_Main.dtpEndDate.FontSize(8.25)
+Gui.f_Main.dtpEndDate.TabStop(True)
+Gui.f_Main.dtpEndDate.TabIndex(4)
+Gui.f_Main.cmdLoad.Create(Button)
+Gui.f_Main.cmdLoad.Enabled(True)
+Gui.f_Main.cmdLoad.Visible(True)
+Gui.f_Main.cmdLoad.Zorder(0)
+Gui.f_Main.cmdLoad.Size(60,23)
+Gui.f_Main.cmdLoad.Position(952,24)
+Gui.f_Main.cmdLoad.Caption("REFRESH")
+Gui.f_Main.cmdLoad.FontName("Tahoma")
+Gui.f_Main.cmdLoad.FontSize(8.25)
+Gui.f_Main.cmdLoad.Event(Click,cmdLoad_Click)
+Gui.f_Main.cmdLoad.Anchor(9)
+Gui.f_Main.cmdLoad.TabStop(True)
+Gui.f_Main.cmdLoad.TabIndex(5)
+Gui.f_Main.lblVendor.Create(Label,"Outside Vendor:",True,78,13,0,144,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblVendor.BorderStyle(0)
+Gui.f_Main.txtVendor.Create(TextBox,"",True,88,20,0,144,26,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.cmdVend.Create(Button)
+Gui.f_Main.cmdVend.Enabled(True)
+Gui.f_Main.cmdVend.Visible(True)
+Gui.f_Main.cmdVend.Zorder(0)
+Gui.f_Main.cmdVend.Size(29,23)
+Gui.f_Main.cmdVend.Position(236,24)
+Gui.f_Main.cmdVend.Caption("^")
+Gui.f_Main.cmdVend.FontName("Tahoma")
+Gui.f_Main.cmdVend.FontSize(8.25)
+Gui.f_Main.cmdVend.Event(Click,cmdVend_Click)
+Gui.f_Main.lblOpCode.Create(Label,"Outside Operation Code:",True,120,13,0,469,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblOpCode.BorderStyle(0)
+Gui.f_Main.txtOpCode.Create(TextBox,"",True,100,20,0,469,26,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.cmdOpCode.Create(Button)
+Gui.f_Main.cmdOpCode.Enabled(True)
+Gui.f_Main.cmdOpCode.Visible(True)
+Gui.f_Main.cmdOpCode.Zorder(0)
+Gui.f_Main.cmdOpCode.Size(29,23)
+Gui.f_Main.cmdOpCode.Position(573,24)
+Gui.f_Main.cmdOpCode.Caption("^")
+Gui.f_Main.cmdOpCode.FontName("Tahoma")
+Gui.f_Main.cmdOpCode.FontSize(8.25)
+Gui.f_Main.cmdOpCode.Event(Click,cmdOpCode_Click)
+Gui.f_Main.lblInOpCode.Create(Label,"Inside Operation Code:",True,112,13,0,612,8,True,0,"Tahoma",8.25,,0,0)
+Gui.f_Main.lblInOpCode.BorderStyle(0)
+Gui.f_Main.txtInOpCode.Create(TextBox,"",True,100,20,0,612,26,True,0,"Tahoma",8.25,,1)
+Gui.f_Main.cmdInOpCode.Create(Button)
+Gui.f_Main.cmdInOpCode.Enabled(True)
+Gui.f_Main.cmdInOpCode.Visible(True)
+Gui.f_Main.cmdInOpCode.Zorder(0)
+Gui.f_Main.cmdInOpCode.Size(29,23)
+Gui.f_Main.cmdInOpCode.Position(716,24)
+Gui.f_Main.cmdInOpCode.Caption("^")
+Gui.f_Main.cmdInOpCode.FontName("Tahoma")
+Gui.f_Main.cmdInOpCode.FontSize(8.25)
+Gui.f_Main.cmdInOpCode.Event(Click,cmdInOpCode_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.bError.Declare(Boolean)
+V.Global.bUnattended.Declare(Boolean)
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.Try
+
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+'open connection to the database
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN, V.Ambient.PUser, v.Ambient.PPass, 5000)
+
+
+'callsub to build the datatable for outside services grid
+F.Intrinsic.Control.CallSub(BuildOutGrid)
+'callsub to format the datatable for outside services grid
+F.Intrinsic.Control.CallSub(FormatOutGrid)
+
+'callsub to build the datatable for inside  services grid
+F.Intrinsic.Control.CallSub(BuildInGrid)
+'callsub to format the datatable for Inside services grid
+F.Intrinsic.Control.CallSub(FormatInGrid)
+
+'set the context menus for the grid
+F.Intrinsic.Control.CallSub(SetContextMenus)
+
+'callsub to deserialize
+F.Intrinsic.Control.CallSub(Deserialize)
+
+'change the theme
+Gui.f_Main..ApplyTheme
+
+'show the form
+Gui.f_Main..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.BuildOutGrid.Start
+F.Intrinsic.Control.Try
+'check to see if datatable exists. If it does, close it
+F.Intrinsic.Control.If(V.DataTable.dtOutServ.Exists)
+	F.Data.DataTable.Close("dtOutServ")
+F.Intrinsic.Control.EndIf
+
+'create datatable
+F.Data.DataTable.Create("dtOutServ", True)
+'add columns
+F.Data.DataTable.AddColumn("dtOutServ", "WO", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "WO_SUFF", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "WO_SEQ", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "VENDOR", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "MACHINE", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "OP_CODE", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "OP_CODE_DESC", "STRING")
+F.Data.DataTable.AddColumn("dtOutServ", "PO_QTY", "FLOAT")
+F.Data.DataTable.AddColumn("dtOutServ", "PO_REC_QTY", "FLOAT")
+F.Data.DataTable.AddColumn("dtOutServ", "PO_CREATE_DT", "DATE")
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.BuildOutGrid.End
+
+Program.Sub.FormatOutGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sDefault.Declare(String)
+V.Local.sGV.Declare(String)
+V.Local.sProperty.Declare(String)
+
+Gui.f_Main.GsGCOutside.AddGridviewFromDatatable("gvOutServ", "dtOutServ")
+V.Local.sGV.Set("gvOutServ")
+
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "MultiSelect", False)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "AllowFilter", True)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "OptionsViewShowGroupPanel", True)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "EnableAppearanceOddRow", False)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "OptionsViewColumnAutoWidth", True)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "AllowColumnResizing", True)
+Gui.f_Main.GsGCOutside.SetGridviewProperty(V.Local.sGV, "AllowColumnMoving", True)
+
+V.Local.sProperty.Set("Visible")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, False)
+
+V.Local.sProperty.Set("Caption")
+V.Local.sDefault.Set(" ")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, "Work Order")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, "WO Suffix")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, "WO Sequence")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, " PO Vendor")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, "Op Code")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, "Vendor")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, "Op Code Description")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, "PO Qty")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, "PO Received Qty")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, "PO Create Date")
+
+V.Local.sProperty.Set("AllowEdit")
+V.Local.sDefault.Set("False")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("ReadOnly")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderFontBold")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderHAlignment")
+V.Local.sDefault.Set("Center")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("MinWidth")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, 100)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, 75)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, 75)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "VENDOR", V.Local.sProperty, 100)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, 100)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, 75)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, 150)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_QTY", V.Local.sProperty, 75)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_REC_QTY", V.Local.sProperty, 75)
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, 75)
+
+V.Local.sProperty.Set("DisplayCustomDatetime")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "PO_CREATE_DT", V.Local.sProperty, "d")
+
+V.Local.sProperty.Set("GroupIndex")
+Gui.f_Main.GsGCOutside.SetColumnProperty(V.Local.sGV, "MACHINE", V.Local.sProperty, 0)
+
+Gui.f_Main.GsGCOutside.AddGridGroupSummaryItem(V.Local.sGV, "WO", "WOCount", "COUNT", "Total # of Work Orders: ","", "n2")
+Gui.f_Main.GsGCOutside.AddGridGroupSummaryItem(V.Local.sGV, "PO_QTY", "POQtySum", "SUM", "Total PO Qty: ","", "n2")
+
+Gui.f_Main.GsGCOutside.MainView("gvOutServ")
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.FormatOutGrid.End
+
+Program.Sub.BuildInGrid.Start
+F.Intrinsic.Control.Try
+'check to see if datatable exists. If it does, close it
+F.Intrinsic.Control.If(V.DataTable.dtInServ.Exists)
+	F.Data.DataTable.Close("dtInServ")
+F.Intrinsic.Control.EndIf
+
+'create datatable
+F.Data.DataTable.Create("dtInServ", True)
+'add columns
+F.Data.DataTable.AddColumn("dtInServ", "WO", "STRING")
+F.Data.DataTable.AddColumn("dtInServ", "WO_SUFF", "STRING")
+F.Data.DataTable.AddColumn("dtInServ", "WO_SEQ", "STRING")
+F.Data.DataTable.AddColumn("dtInServ", "OP_CODE", "STRING")
+F.Data.DataTable.AddColumn("dtInServ", "OP_CODE_DESC", "STRING")
+F.Data.DataTable.AddColumn("dtInServ", "WO_QTY", "FLOAT")
+F.Data.DataTable.AddColumn("dtInServ", "DATE_SEQ_START", "DATE")
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.BuildInGrid.End
+
+Program.Sub.FormatInGrid.Start
+F.Intrinsic.Control.Try
+V.Local.sDefault.Declare(String)
+V.Local.sGV.Declare(String)
+V.Local.sProperty.Declare(String)
+
+Gui.f_Main.GsGCInside.AddGridviewFromDatatable("gvInServ", "dtInServ")
+V.Local.sGV.Set("gvInServ")
+
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "MultiSelect", False)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "AllowFilter", True)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "OptionsViewShowGroupPanel", True)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "EnableAppearanceOddRow", False)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "OptionsViewColumnAutoWidth", True)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "AllowColumnResizing", True)
+Gui.f_Main.GsGCInside.SetGridviewProperty(V.Local.sGV, "AllowColumnMoving", True)
+
+V.Local.sProperty.Set("Caption")
+V.Local.sDefault.Set(" ")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, "Work Order")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, "WO Suffix")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, "WO Sequence")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, "Op Code")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, "Op Code Description")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, "WO Qty")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, "WO Seq Start Date")
+
+V.Local.sProperty.Set("AllowEdit")
+V.Local.sDefault.Set("False")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("ReadOnly")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderFontBold")
+V.Local.sDefault.Set("True")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("HeaderHAlignment")
+V.Local.sDefault.Set("Center")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, V.Local.sDefault)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, V.Local.sDefault)
+
+V.Local.sProperty.Set("MinWidth")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO", V.Local.sProperty, 100)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SUFF", V.Local.sProperty, 75)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_SEQ", V.Local.sProperty, 75)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty, 75)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE_DESC", V.Local.sProperty, 150)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "WO_QTY", V.Local.sProperty, 75)
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, 75)
+
+V.Local.sProperty.Set("DisplayCustomDatetime")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "DATE_SEQ_START", V.Local.sProperty, "d")
+
+V.Local.sProperty.Set("GroupIndex")
+Gui.f_Main.GsGCInside.SetColumnProperty(V.Local.sGV, "OP_CODE", V.Local.sProperty,0)
+
+Gui.f_Main.GsGCInside.AddGridGroupSummaryItem(V.Local.sGV, "WO", "WOCount", "COUNT", "Total # of Work Orders: ","", "n2")
+Gui.f_Main.GsGCInside.addGridGroupSummaryItem(V.Local.sGV, "WO_QTY", "WOQtySum", "SUM", "Total WO Qty: ", "", "n2")
+
+Gui.f_Main.GsGCInside.MainView("gvInServ")
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.FormatInGrid.End
+
+Program.Sub.SetContextMenus.Start
+F.Intrinsic.Control.Try
+
+'create the context menu for the outside service tab
+Gui.f_Main..ContextMenuCreate("ctxOut")
+Gui.f_Main.GsGCOutside.ContextMenuAttach("ctxOut")
+Gui.f_Main..ContextMenuAddItem("ctxOut", "Export",0, "Export")
+Gui.f_Main..ContextMenuSetItemEventHandler("ctxOut", "Export", "MenuClickExport")
+
+'create the context menu for the inside service tab
+Gui.f_Main..ContextMenuCreate("ctxIn")
+Gui.f_Main.GsGCInside.ContextMenuAttach("ctxIn")
+Gui.f_Main..ContextMenuAddItem("ctxIn", "Export",0, "Export")
+Gui.f_Main..ContextMenuSetItemEventHandler("ctxIn", "Export", "MenuClickExport")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.SetContextMenus.End
+
+Program.Sub.MenuClickExport.Start
+F.Intrinsic.Control.Try
+V.Local.iCnt.Declare(Long)
+V.Local.sFileExport.Declare(String)
+V.Local.bExcel.Declare(Boolean)
+V.Local.bFileLocked.Declare(Boolean)
+V.Local.sMsg.Declare(Boolean)
+V.Local.sForm.Declare(String)
+v.Local.sControl.Declare(String)
+V.Local.sDataTable.Declare(String)
+V.Local.sGV.Declare(String)
+
+F.Intrinsic.Control.SelectCase(V.Args.MenuName)
+F.Intrinsic.Control.Case("CTXOUT")
+	V.Local.sForm.Set("f_Main")
+	V.Local.sControl.Set("GsGCOutside")
+	V.Local.sDataTable.Set("dtOutServ")
+	V.Local.sGV.Set("gvOutServ")
+F.Intrinsic.Control.Case("CTXIN")
+	V.Local.sForm.Set("f_Main")
+	V.Local.sControl.Set("GsGCInside")
+	V.Local.sDataTable.Set("dtInServ")
+	V.Local.sGV.Set("gvInServ")
+F.Intrinsic.Control.EndSelect
+
+F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+F.Intrinsic.Control.If(V.Local.bExcel)
+	F.Intrinsic.String.Build("{0}GCG_6718_{1}_Export.xlsx",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sFileExport)
+	F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+	F.Intrinsic.Control.If(V.Local.bFileLocked)
+		F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+		F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.DataTable.[V.Local.sDataTable].RowCount--,>,-1)
+			F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.[V.Local.sDataTable].RowCount--,1)
+				Gui.[V.Local.sForm].[V.Local.sControl].ExpandMasterRow(V.Local.sGV, V.Local.iCnt)
+			F.Intrinsic.Control.Next(V.Local.iCnt)
+		F.Intrinsic.Control.EndIf
+		Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"xlsx")
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		
+		F.Intrinsic.Control.If(V.DataTable.[V.Local.sDataTable].RowCount--,>,-1)
+			F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.[V.Local.sDataTable].RowCount--,1)
+				Gui.[V.Local.sForm].[V.Local.sControl].CollapseMasterRow(V.Local.sGV, V.Local.iCnt)
+			F.Intrinsic.Control.Next(V.Local.iCnt)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.String.Build("{0}GCG_6718_{1}_Export.csv",V.Caller.LocalGssTempDir,V.Local.sControl,V.Local.sFileExport)
+	F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+	F.Intrinsic.Control.If(V.Local.bFileLocked)
+		F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+		F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.Control.If(V.DataTable.[V.Local.sDataTable].RowCount--,>,-1)
+			F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.[V.Local.sDataTable].RowCount--,1)
+				Gui.[V.Local.sForm].[V.Local.sControl].ExpandMasterRow(V.Local.sGV, V.Local.iCnt)
+			F.Intrinsic.Control.Next(V.Local.iCnt)
+		F.Intrinsic.Control.EndIf
+		Gui.[V.Local.sForm].[V.Local.sControl].Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		
+		F.Intrinsic.Control.If(V.DataTable.[V.Local.sDataTable].RowCount--,>,-1)
+			F.Intrinsic.Control.For(V.Local.iCnt, 0, V.DataTable.[V.Local.sDataTable].RowCount--,1)
+				Gui.[V.Local.sForm].[V.Local.sControl].CollapseMasterRow(V.Local.sGV, V.Local.iCnt)
+			F.Intrinsic.Control.Next(V.Local.iCnt)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.MenuClickExport.End
+
+Program.Sub.cmdCustBrw_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare(String)
+v.Local.sCust.Declare(String)
+
+F.Intrinsic.Control.If(V.Screen.f_Main!txtCust.Text,<>,"")
+	V.Local.sCust.Set(V.Screen.f_Main!txtCust.Text)
+F.Intrinsic.Control.Else
+	V.Local.sCust.Set("")
+F.Intrinsic.Control.EndIf
+'create the customer browser
+F.Intrinsic.UI.Browser(205,V.Local.sCust.Trim, V.Local.sRet)
+
+'if the user selects a customer, populate the customer text box
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"***CANCEL***")	
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	Gui.f_Main.txtCust.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+'exit sub
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCustBrw_Click.End
+
+Program.Sub.cmdVend_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare(String)
+
+'create the customer browser
+F.Intrinsic.UI.Browser(300,"", V.Local.sRet)
+
+'if the user selects a customer, populate the customer text box
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"***CANCEL***")	
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	Gui.f_Main.txtVendor.Text(V.Local.sRet(0).Trim)
+F.Intrinsic.Control.EndIf
+
+'exit sub
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations +Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdVend_Click.End
+
+Program.Sub.cmdOpCode_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.iWidth.Declare(String)
+
+Function.Intrinsic.String.Split("LMO*!*Machine*!*Operation*!*Description","*!*",variable.local.sTitles)
+F.Intrinsic.String.Split("800*!*1000*!*1000*!*2000", "*!*", V.Local.iWidth)
+
+'create the op Code browser
+F.Intrinsic.UI.Browser("Select an Outside Op Code", "con","SELECT LMO, MACHINE, OPERATION, DESCRIPTION FROM V_OP_CODES WHERE LMO = 'O' ORDER BY MACHINE",V.Local.sTitles, V.Local.iWidth, V.Local.sRet)
+
+'if the user selects an op code, populate the op code text box
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"***CANCEL***")	
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	Gui.f_Main.txtOpCode.Text(V.Local.sRet(1).Trim)
+F.Intrinsic.Control.EndIf
+'exit sub
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdOpCode_Click.End
+
+Program.Sub.cmdInOpCode_Click.Start
+F.Intrinsic.Control.Try
+V.Local.sRet.Declare(String)
+V.Local.sTitles.Declare(String)
+V.Local.iWidth.Declare(String)
+
+Function.Intrinsic.String.Split("LMO*!*Operation*!*Machine*!*Description","*!*",variable.local.sTitles)
+F.Intrinsic.String.Split("800*!*1000*!*1000*!*2000", "*!*", V.Local.iWidth)
+
+'create the op Code browser
+F.Intrinsic.UI.Browser("Select an Inside Op Code", "con","SELECT LMO, OPERATION, MACHINE, DESCRIPTION FROM V_OP_CODES WHERE LMO = 'L' ORDER BY OPERATION",V.Local.sTitles, V.Local.iWidth, V.Local.sRet)
+
+'if the user selects an op code, populate the op code text box
+F.Intrinsic.Control.If(V.Local.sRet.Trim,<>,"***CANCEL***")	
+	F.Intrinsic.String.Split(V.Local.sRet, "*!*", V.Local.sRet)
+	Gui.f_Main.txtInOpCode.Text(V.Local.sRet(1).Trim)
+F.Intrinsic.Control.EndIf
+'exit sub
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdInOpCode_Click.End
+
+Program.Sub.cmdLoad_Click.Start
+F.Intrinsic.Control.Try
+
+F.Intrinsic.UI.InvokeWaitDialog("Loading Data...", "Please Wait")
+
+
+'check to see if datatable has any rows
+F.Intrinsic.Control.If(V.DataTable.dtOutServ.RowCount--,>,-1)
+	F.Data.DataTable.DeleteRow("dtOutServ", -1)
+F.Intrinsic.Control.EndIf
+
+'check to see if datatable has any rows
+F.Intrinsic.Control.If(V.DataTable.dtInServ.RowCount--,>,-1)
+	F.Data.DataTable.DeleteRow("dtInServ", -1)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Screen.f_Main!txtOpCode.Text,=,"", "AND", v.Screen.f_Main!txtOpCode.Text,=,"")
+	'callsub to load the data for each grid
+	F.Intrinsic.Control.CallSub(LoadOutsideData)
+	
+	F.Intrinsic.Control.CallSub(LoadInsideGrid)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.If(V.Screen.f_Main!txtOpCode.Text,<>,"")
+		'callsub to load the data for each grid
+		F.Intrinsic.Control.CallSub(LoadOutsideData)
+	F.Intrinsic.Control.ElseIf(V.Screen.f_Main!txtOpCode.Text,=,"")
+		Gui.f_Main.tabData.SetTab(1)
+	F.Intrinsic.Control.EndIf
+
+	
+	F.Intrinsic.Control.If(V.Screen.f_Main!txtInOpCode.Text,<>,"")
+		F.Intrinsic.Control.CallSub(LoadInsideGrid)
+	F.Intrinsic.Control.Else
+		Gui.f_Main.tabData.SetTab(0)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+
+F.Intrinsic.UI.CloseWaitDialog
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdLoad_Click.End
+
+Program.Sub.LoadOutsideData.Start
+F.Intrinsic.Control.Try
+V.Local.dStart.Declare(Date)
+V.Local.dEnd.Declare(Date)
+V.Local.sCust.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sVend.Declare(String)
+V.Local.sStartDate.Declare(String)
+V.Local.sEndDate.Declare(String)
+V.Local.sOpCode.Declare(String)
+
+V.Local.sCust.Set(V.Screen.f_Main!txtCust.Text)
+V.Local.sVend.Set(v.Screen.f_Main!txtVendor.Text)
+V.Local.dStart.Set(V.Screen.f_Main!dtpStartDate.Value)
+F.Intrinsic.String.Format(V.Local.dStart, "YYYY-MM-DD", V.Local.sStartDate)
+V.Local.dEnd.Set(V.Screen.f_Main!dtpEndDate.Value)
+F.Intrinsic.String.Format(V.Local.dEnd, "YYYY-MM-DD", V.Local.sEndDate)
+V.Local.sOpCode.Set(V.Screen.f_Main!txtOpCode.Text)
+
+F.Intrinsic.Control.If(v.Local.sCust.Trim,<>,"")
+	F.Intrinsic.Control.If(v.Local.sVend.Trim,<>,"")
+		F.Intrinsic.Control.If(V.Local.sOpCode.Trim,<>,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.PART AS MACHINE, A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON  A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND B.CUSTOMER = '{0}' AND D.VENDOR = '{1}' AND A.PART = '{4}' AND A.DATE_START >= '{2}' AND A.DATE_START <= '{3}' AND A.SEQ < 900000", V.Local.sCust.Trim, V.Local.sVend.Trim,v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim,V.Local.sSQL)
+		F.Intrinsic.Control.ElseIf(V.Local.sOpCode.Trim,=,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.PART AS MACHINE,A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON  A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND B.CUSTOMER = '{0}' AND D.VENDOR = '{1}' AND A.DATE_START >= '{2}' AND A.DATE_START <= '{3}' AND A.SEQ < 900000", V.Local.sCust.Trim, V.Local.sVend.Trim,v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.ElseIf(V.Local.sVend.Trim,=,"")
+		F.Intrinsic.Control.If(V.Local.sOpCode.Trim,<>,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.PART AS MACHINE,A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND B.CUSTOMER = '{0}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.PART = '{3}' AND A.SEQ < 900000", V.Local.sCust.Trim,v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim,V.Local.sSQL)
+		F.Intrinsic.Control.ElseIf(V.Local.sOpCode.Trim,=,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ,A.PART AS MACHINE, A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND B.CUSTOMER = '{0}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.SEQ < 900000", V.Local.sCust.Trim,v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ElseIf(V.Local.sCust.Trim,=,"")
+	F.Intrinsic.Control.If(V.Local.sVend.Trim,<>,"")
+		f.Intrinsic.Control.If(V.Local.sOpCode.Trim,<>,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.PART AS MACHINE,A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON  A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O'  AND D.VENDOR = '{0}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.PART = '{3}' AND A.SEQ > 900000", V.Local.sVend.Trim, v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim, V.Local.sSQL)
+		F.Intrinsic.Control.ElseIf(V.Local.sOpCode.Trim,=,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ,A.PART AS MACHINE, A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON  A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O'  AND D.VENDOR = '{0}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.SEQ < 900000", V.Local.sVend.Trim, v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+		F.Intrinsic.Control.EndIf 
+	F.Intrinsic.Control.ElseIf(V.Local.sVend.Trim,=,"")
+		f.Intrinsic.Control.If(v.Local.sOpCode.Trim,<>,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ,A.PART AS MACHINE, A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON  A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND A.DATE_START >= '{0}' AND A.DATE_START <= '{1}' AND A.PART = '{2}' AND A.SEQ < 900000", v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim, V.Local.sSQL)
+		f.Intrinsic.Control.ElseIf(v.Local.sOpCode.Trim,=,"")
+			F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ,A.PART AS MACHINE, A.OPERATION AS OP_CODE, B.CUSTOMER, C.DESCRIPTION AS OP_CODE_DESC, CAST(D.QTY_ORDER AS FLOAT) AS PO_QTY, CAST(D.QTY_RECEIVED AS FLOAT) AS PO_REC_QTY, E.DATE_ORDER AS PO_CREATE_DT  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE LEFT JOIN V_PO_HEADER E ON D.PURCHASE_ORDER = E.PURCHASE_ORDER WHERE C.LMO = 'O' AND A.DATE_START >= '{0}' AND A.DATE_START <= '{1}' AND A.SEQ < 900000", v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtTemp.Exists)
+	F.Data.DataTable.Close("dtTemp")
+F.Intrinsic.Control.EndIf
+'create the temp datatable
+F.Data.DataTable.CreateFromSQL("dtTemp", "con", v.Local.sSQL, True)
+F.Intrinsic.Control.If(V.DataTable.dtTemp.RowCount--,>,-1)
+	'merge the datatable with the parent
+	F.Data.DataTable.Merge("dtTemp", "dtOutServ",True, 4)
+F.Intrinsic.Control.EndIf
+
+'close the temp datatable
+F.Data.DataTable.Close("dtTemp")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadOutsideData.End
+
+Program.Sub.LoadInsideGrid.Start
+F.Intrinsic.Control.Try
+V.Local.dStart.Declare(Date)
+V.Local.dEnd.Declare(Date)
+V.Local.sCust.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.sVend.Declare(String)
+V.Local.sStartDate.Declare(String)
+V.Local.sEndDate.Declare(String)
+V.Local.sOpCode.Declare(String)
+
+V.Local.sCust.Set(V.Screen.f_Main!txtCust.Text)
+V.Local.dStart.Set(V.Screen.f_Main!dtpStartDate.Value)
+F.Intrinsic.String.Format(V.Local.dStart, "YYYY-MM-DD", V.Local.sStartDate)
+V.Local.dEnd.Set(V.Screen.f_Main!dtpEndDate.Value)
+F.Intrinsic.String.Format(V.Local.dEnd, "YYYY-MM-DD", V.Local.sEndDate)
+V.Local.sOpCode.Set(V.Screen.f_Main!txtInOpCode.Text)
+
+F.Intrinsic.Control.If(v.Local.sCust.Trim,<>,"")
+	F.Intrinsic.Control.If(V.Local.sOpCode.Trim,<>,"")
+		F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.OPERATION AS OP_CODE, B.CUSTOMER,CAST(B.QTY_ORDER AS FLOAT) AS WO_QTY, C.DESCRIPTION AS OP_CODE_DESC, A.DATE_START AS DATE_SEQ_START FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.OPERATION = C.OPERATION AND A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE WHERE A.LMO = 'L' AND B.CUSTOMER = '{0}'  AND A.OPERATION = '{3}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.SEQ < 900000", V.Local.sCust.Trim, v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim,V.Local.sSQL)
+	F.Intrinsic.Control.ElseIf(V.Local.sOpCode.Trim,=,"")
+		F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.OPERATION AS OP_CODE, B.CUSTOMER,CAST(B.QTY_ORDER AS FLOAT) AS WO_QTY, C.DESCRIPTION AS OP_CODE_DESC, A.DATE_START AS DATE_SEQ_START FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.OPERATION = C.OPERATION AND A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE WHERE A.LMO = 'L' AND B.CUSTOMER = '{0}' AND A.DATE_START >= '{1}' AND A.DATE_START <= '{2}' AND A.SEQ < 900000", V.Local.sCust.Trim, v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.ElseIf(V.Local.sCust.Trim,=,"")
+	f.Intrinsic.Control.If(V.Local.sOpCode.Trim,<>,"")
+		F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.OPERATION AS OP_CODE, B.CUSTOMER,CAST(B.QTY_ORDER AS FLOAT) AS WO_QTY, C.DESCRIPTION AS OP_CODE_DESC, A.DATE_START AS DATE_SEQ_START  FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.OPERATION = C.OPERATION AND A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE WHERE A.LMO = 'L'  AND A.DATE_START >= '{0}' AND A.DATE_START <= '{1}' AND A.OPERATION = '{2}' AND A.SEQ < 900000", v.Local.sStartDate, V.Local.sEndDate,v.Local.sOpCode.Trim, V.Local.sSQL)
+	F.Intrinsic.Control.ElseIf(V.Local.sOpCode.Trim,=,"")
+		F.Intrinsic.String.Build("SELECT A.JOB AS WO, A.SUFFIX AS WO_SUFF, A.SEQ AS WO_SEQ, A.OPERATION AS OP_CODE, B.CUSTOMER,CAST(B.QTY_ORDER AS FLOAT) AS WO_QTY, C.DESCRIPTION AS OP_CODE_DESC, A.DATE_START AS DATE_SEQ_START FROM V_JOB_OPERATIONS A LEFT JOIN V_JOB_HEADER B ON A.JOB = B.JOB AND A.SUFFIX = B.SUFFIX LEFT JOIN V_OP_CODES C ON A.OPERATION = C.OPERATION AND A.PART = C.MACHINE LEFT JOIN V_PO_LINES D ON A.JOB = D.JOB AND A.SUFFIX = D.SUFFIX AND A.SEQ = D.SEQUENCE WHERE A.LMO = 'L'  AND A.DATE_START >= '{0}' AND A.DATE_START <= '{1}' AND A.SEQ < 900000", v.Local.sStartDate, V.Local.sEndDate,V.Local.sSQL)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.DataTable.dtTemp.Exists)
+	F.Data.DataTable.Close("dtTemp")
+F.Intrinsic.Control.EndIf
+'create the temp datatable
+F.Data.DataTable.CreateFromSQL("dtTemp", "con", v.Local.sSQL, True)
+
+F.Intrinsic.Control.If(V.DataTable.dtTemp.RowCount--,>,-1)
+	'merge the datatable with the parent
+	F.Data.DataTable.Merge("dtTemp", "dtInServ",True, 4)
+F.Intrinsic.Control.EndIf
+
+'close the temp datatable
+F.Data.DataTable.Close("dtTemp")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.LoadInsideGrid.End
+
+Program.Sub.Serialize.Start
+F.Intrinsic.Control.Try
+V.Local.sSerialize.Declare(String)
+
+Gui.f_Main.GsGCOutside.Serialize("gvOutServ", V.Local.sSerialize)
+F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvOutServ",6718,2000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+
+Gui.f_Main.GsGCInside.Serialize("gvInServ", V.Local.sSerialize)
+F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvInServ",6718,2000,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+F.Intrinsic.Control.Try
+V.Local.sSerialize.Declare(String)
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvOutServ",6718,0,5,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+	F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+	F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 6718 And Seq < 1000;")
+	F.ODBC.Connection!common.Close
+F.Intrinsic.Control.EndIf
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode, "gvOutServ",6718,2000,6,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+	Gui.f_Main.GsGCOutside.Deserialize(V.Local.sSerialize)
+F.Intrinsic.Control.EndIf
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvInServ",6718,0,5,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize,<>,"")
+	F.ODBC.Connection!common.OpenConnection(V.Ambient.Ccon,V.Ambient.Cuser,V.Ambient.Cpass)
+	F.ODBC.Connection!common.Execute("Delete From Gs_Registry Where Reg_ID = 6718 And Seq < 1000;")
+	F.ODBC.Connection!common.Close
+F.Intrinsic.Control.EndIf
+
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode, "gvInServ",6718,2000,6,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+	Gui.f_Main.GsGCInside.Deserialize(V.Local.sSerialize)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.f_Main_UnLoad.Start
+F.Intrinsic.Control.Try
+'if data has been loaded, serialize the grids
+F.Intrinsic.Control.CallSub(Serialize)
+
+'close the connection
+F.ODBC.Connection!con.Close
+
+'end the script
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessage, "ErrorNumber", V.Ambient.ErrorNumber, "ErrorDescription", V.Ambient.ErrorDescription, "Subroutine", V.Ambient.CurrentSubroutine, "UNATTENDED", V.Global.bUnattended, "Project", "6718", "ProjectTitle", "Work Order Operations Dashboard", "Callback", "f_Main_UnLoad")
+F.Intrinsic.Control.EndTry
+Program.Sub.f_Main_UnLoad.End
+
+Program.Sub.ErrorMessage.Start
+'basic error message for replacing catch block
+'this is really just for when printing the message and ending program
+'pass error number, error description, current subroutine
+'optional callback sub, this will be called before ending
+'optional unattended parameters, those subs may not exist if not using them but won't be called
+F.Intrinsic.Control.Try
+
+V.Local.iError.Declare(Long)
+V.Local.sErrorDescription.Declare(String)
+V.Local.sSubroutine.Declare(String)
+V.Local.sError.Declare(String)
+V.Local.bExists.Declare(Boolean)
+V.Local.sCallback.Declare(String)
+
+V.Local.iError.Set(V.Args.ErrorNumber)
+V.Local.sErrorDescription.Set(V.Args.ErrorDescription)
+V.Local.sSubroutine.Set(V.Args.Subroutine)
+
+'make sure we aren't in an error loop
+F.Intrinsic.Control.If(V.Global.bError)
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndIf
+V.Global.bError.Set(True)
+
+F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}", V.Caller.ScriptFile, V.Ambient.Newline, V.Local.sSubroutine, V.Local.iError, V.Local.sErrorDescription, V.Ambient.GABVersion, V.Local.sError)
+
+F.Intrinsic.Variable.ArgExists("UNATTENDED", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	F.Intrinsic.Control.If(V.Args.UNATTENDED)
+		F.Intrinsic.Control.CallSub(UnattendedErrorMessage, "MESSAGE", V.Local.sError, "PROJECT", V.Args.PROJECT, "PROJECTTITLE", V.Args.PROJECTTITLE)
+	F.Intrinsic.Control.Else
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Else
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Variable.ArgExists("Callback", V.Local.bExists)
+F.Intrinsic.Control.If(V.Local.bExists)
+	V.Local.sCallback.Set(V.Args.Callback.Trim)
+	F.Intrinsic.Control.CallSub(V.Local.sCallback)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Caller.ScriptFile,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End
+
+F.Intrinsic.Control.EndTry
+Program.Sub.ErrorMessage.End
+
+Program.Sub.Comments.Start
+${$5$}$3.0.0.0$}$1
+${$6$}$acollins$}$20220509203519330$}$h98hERc2yV72q0GaUGlwSaoK/aefTdVk/XotSp2jZHhmVVZhEOphV3hNfY7n5j+5yyXi19UhAbNECJ8xrMqv0Q==
+Program.Sub.Comments.End
